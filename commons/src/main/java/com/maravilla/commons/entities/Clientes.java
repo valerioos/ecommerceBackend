@@ -14,11 +14,12 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "CLIENTES")
-@SequenceGenerator(name = "SEQ_CLIENTES", sequenceName = "SEQ_CLIENTES", allocationSize = 1)
 public class Clientes {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "SEQ_CLIENTES", sequenceName = "SEQ_CLIENTES", allocationSize = 1)
+
 	@Column(name = "ID_CLENTE")
     private Long id;
 
@@ -32,7 +33,7 @@ public class Clientes {
     private String email;
     
     @Column(name ="TELEFONO", nullable = false, unique = true)
-    private String telefono;
+    private Long telefono;
     
     @Column(name ="DIRECCION")
     private String direccion;
@@ -40,7 +41,7 @@ public class Clientes {
 	public Clientes() {
 	}
 
-	public Clientes(Long id, String nombre, String apellido, String email, String telefono, String direccion) {
+	public Clientes(Long id, String nombre, String apellido, String email, Long telefono, String direccion) {
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -81,11 +82,11 @@ public class Clientes {
 		this.email = email;
 	}
 
-	public String getTelefono() {
+	public Long getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(String telefono) {
+	public void setTelefono(Long telefono) {
 		this.telefono = telefono;
 	}
 

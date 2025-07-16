@@ -95,11 +95,4 @@ public class Productos {
 		this.stock = stock;
 	}
 	
-	
-	
-	
-	
-    
-    
-	
 }
