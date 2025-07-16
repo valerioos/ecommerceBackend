@@ -10,6 +10,7 @@ public class ProductoPedido {
 	private String descripcion;
 	private Double precio;
 	private Integer cantidad;
+	
 	public Long getIdProducto() {
 		return idProducto;
 	}

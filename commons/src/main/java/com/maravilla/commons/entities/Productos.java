@@ -21,7 +21,6 @@ public class Productos {
 	@SequenceGenerator(name = "SEQ_PRODUCTOS", sequenceName = "SEQ_PRODUCTOS", allocationSize = 1)
 	@Column(name = "ID_PRODUCTO")
     private Long id;
-
 	
 	@Column(name = "NOMBRE")
 	@NotBlank(message = "El nombre del producto es requerido.")
