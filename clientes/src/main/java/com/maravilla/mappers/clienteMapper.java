@@ -16,7 +16,11 @@ public class clienteMapper extends CommonMapper<ClientesRequest, ClientesRespons
 			return null;
 		}
 		ClientesResponse clientesResponse=  new ClientesResponse(entity.getId(), 
-			entity.getNombre(), entity.getApellido(), entity.getEmail(), entity.getTelefono(), entity.getDireccion());
+			entity.getNombre(),
+			entity.getApellido(),
+			entity.getEmail(), 
+			entity.getTelefono(),
+			entity.getDireccion());
 		return clientesResponse;
 	}	
 		
