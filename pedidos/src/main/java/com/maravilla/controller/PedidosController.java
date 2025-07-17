@@ -15,13 +15,12 @@ public class PedidosController extends CommonController<PedidosRequest, PedidosR
 
 	public PedidosController(PedidosService service) {
 		
-		super(service);
+	super(service);
 	}
 	
 	@GetMapping("/id-producto/{id}")
 	public ResponseEntity<Boolean> productoIsPresent(@PathVariable Long id) {
 		boolean isPresent = service.existeProducto(id);
-		
 		return ResponseEntity.ok(isPresent);
 	}
 
