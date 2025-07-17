@@ -1,4 +1,5 @@
-package com.maravilla.mappers;
+package com.maravilla.clientes.mappers;
+
 
 import org.springframework.stereotype.Component;
 

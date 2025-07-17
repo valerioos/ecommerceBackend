@@ -1,4 +1,5 @@
-package com.maravilla.servicies;
+package com.maravilla.clientes.servicies;
+
 
 import com.maravilla.commons.dto.ClientesRequest;
 import com.maravilla.commons.dto.ClientesResponse;

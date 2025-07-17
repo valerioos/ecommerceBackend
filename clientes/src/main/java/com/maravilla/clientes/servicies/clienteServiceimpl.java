@@ -1,4 +1,5 @@
-package com.maravilla.servicies;
+package com.maravilla.clientes.servicies;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +14,8 @@ import com.maravilla.commons.dto.ClientesRequest;
 import com.maravilla.commons.dto.ClientesResponse;
 import com.maravilla.commons.entities.Clientes;
 import com.maravilla.commons.exception.EntidadRelacionadaException;
-import com.maravilla.mappers.clienteMapper;
-import com.maravilla.repository.clienteRepository;
-
+import com.maravilla.clientes.repository.clienteRepository;
+import com.maravilla.clientes.mappers.*;
 
 public class clienteServiceimpl implements clienteServicies{
 	
@@ -23,9 +23,8 @@ public class clienteServiceimpl implements clienteServicies{
 	private clienteMapper clienteMapper;
 	private PedidoCliente pedidoCliente;	
 	
-
-	public clienteServiceimpl(com.maravilla.repository.clienteRepository clienteRepository,
-			com.maravilla.mappers.clienteMapper clienteMapper, PedidoCliente pedidoCliente) {
+	public clienteServiceimpl(com.maravilla.clientes.repository.clienteRepository clienteRepository,
+			com.maravilla.clientes.mappers.clienteMapper clienteMapper, PedidoCliente pedidoCliente) {
 		this.clienteRepository = clienteRepository;
 		this.clienteMapper = clienteMapper;
 		this.pedidoCliente = pedidoCliente;
