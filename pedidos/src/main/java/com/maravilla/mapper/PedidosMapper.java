@@ -11,7 +11,7 @@ import com.maravilla.commons.mappers.CommonMapper;
 public class PedidosMapper extends CommonMapper<PedidosRequest, PedidosResponse, Pedidos>{
 
 	@Override
-	protected PedidosResponse entityToResponse(Pedidos entity) {
+	public PedidosResponse entityToResponse(Pedidos entity) {
 		if(entity== null) {
 			return null;
 		}

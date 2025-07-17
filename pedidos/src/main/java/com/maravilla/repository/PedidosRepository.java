@@ -7,4 +7,6 @@ import com.maravilla.commons.entities.Pedidos;
 @Repository
 public interface PedidosRepository extends JpaRepository<Pedidos, Long>{
 
+	boolean existeProductoId(Long id);
+
 }
