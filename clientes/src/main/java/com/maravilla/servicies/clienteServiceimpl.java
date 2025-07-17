@@ -10,6 +10,7 @@ import com.maravilla.clientes.clients.PedidoCliente;
 import com.maravilla.commons.dto.ClientesRequest;
 import com.maravilla.commons.dto.ClientesResponse;
 import com.maravilla.commons.entities.Clientes;
+import com.maravilla.commons.exception.EntidadRelacionadaException;
 import com.maravilla.mappers.clienteMapper;
 import com.maravilla.repository.clienteRepository;
 
@@ -22,7 +23,7 @@ public class clienteServiceimpl implements clienteServicies{
 	private PedidoCliente pedidoCliente;	
 	
 	public clienteServiceimpl(clienteRepository clienteRepository, clienteMapper clienteMapper,
-			PedidoCliente pedidoClient) {
+			pedidoCliente pedidoClient) {
 		super();
 		this.clienteRepository = clienteRepository;
 		this.clienteMapper = clienteMapper;
@@ -69,32 +70,15 @@ public class clienteServiceimpl implements clienteServicies{
 	@Override
 	public ClientesResponse eliminar(Long id) {
 		
-		Clientes clientes = clienteRepository
-		return null;
-	}
-
-	@Override
-	public boolean existeProductos(Long id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean existeCatalogos(Long id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean existeclientes(Long id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean existeTipo(Long id) {
-		// TODO Auto-generated method stub
-		return false;
+		Clientes clientes = clienteRepository.findById(id).orElseThrow(NoSuchElementException:: new);
+		boolean enUso=PedidoCliente.clienteIsPresent(id);
+		
+		if (enUso) {
+			throw new EntidadRelacionadaException("no se puede eliminar -cliente-, ya que esta asociado a un pedido");
+		}else {
+			clienteRepository.deleteById(id);
+			return clienteMapper.entityToResponse(clientes);
+		}
 	}
 
 }

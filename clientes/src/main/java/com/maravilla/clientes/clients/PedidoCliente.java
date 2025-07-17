@@ -4,12 +4,16 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-public interface PedidoCliente {
-
 	@FeignClient(name= "pedido")
-	public interface pedidoClient{
+	public interface PedidoCliente{
 		
 		@GetMapping("/id-cliente/{id}")
-		boolean clienteIsPresent(@PathVariable Long id);
+	
+		boolean clienteIsPresent(@PathVariable Long id) {
+			// TODO Auto-generated method stub
+			return false;
+		}
 	}
+
+	
 }
