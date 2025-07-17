@@ -1,0 +1,6 @@
+git status (muestra el status de los archivos, los no subidos, creo)
+git fetch (baja los cambios que halla subido el equipo)
+git pull (baja los cambios que se hallan subido, y ADEMAS tra la copia de esos cambios al repo,
+este viene depues de git fetch)
+git commit -m "" (se realiza commit y se sube al repo para qque los demas lo puedan vizualizar)
+git push, despues de cada commit para verificar que se hallan bajado los cambios correpondientes.
