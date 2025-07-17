@@ -1,4 +1,5 @@
-package com.maravilla.mapper;
+package com.maravilla.pedidos.mapper;
+
 
 import org.springframework.stereotype.Component;
 

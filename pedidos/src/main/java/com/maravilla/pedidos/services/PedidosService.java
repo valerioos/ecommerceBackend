@@ -1,4 +1,5 @@
-package com.maravilla.services;
+package com.maravilla.pedidos.services;
+
 
 import org.springframework.stereotype.Service;
 

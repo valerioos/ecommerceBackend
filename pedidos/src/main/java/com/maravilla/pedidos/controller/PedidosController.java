@@ -1,4 +1,5 @@
-package com.maravilla.controller;
+package com.maravilla.pedidos.controller;
+
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.maravilla.commons.controllers.CommonController;
 import com.maravilla.commons.dto.PedidosRequest;
 import com.maravilla.commons.dto.PedidosResponse;
-import com.maravilla.services.PedidosService;
+import com.maravilla.pedidos.services.PedidosService;
 
 @RestController
 public class PedidosController extends CommonController<PedidosRequest, PedidosResponse, PedidosService>{

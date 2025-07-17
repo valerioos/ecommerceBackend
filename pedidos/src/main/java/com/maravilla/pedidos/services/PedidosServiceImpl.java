@@ -1,4 +1,5 @@
-package com.maravilla.services;
+package com.maravilla.pedidos.services;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.maravilla.commons.dto.PedidosRequest;
 import com.maravilla.commons.dto.PedidosResponse;
 import com.maravilla.commons.entities.Pedidos;
-import com.maravilla.mapper.PedidosMapper;
 import com.maravilla.pedidos.PedidosApplication;
-import com.maravilla.repository.PedidosRepository;
+import com.maravilla.pedidos.mapper.PedidosMapper;
+import com.maravilla.pedidos.repository.PedidosRepository;
 
 @Service
 public class PedidosServiceImpl implements PedidosService{
@@ -22,12 +23,12 @@ public class PedidosServiceImpl implements PedidosService{
 	
 	private PedidosRepository repository;
 	private PedidosMapper mapper;
-	
-		public PedidosServiceImpl(PedidosRepository pedidosRepository, PedidosMapper pedidosMapper, PedidosApplication pedidosApplication) {
-		
-		this.repository = pedidosRepository;
-		this.mapper = pedidosMapper;
+
+	public PedidosServiceImpl(PedidosApplication pedidosApplication, PedidosRepository repository,
+			PedidosMapper mapper) {
 		this.pedidosApplication = pedidosApplication;
+		this.repository = repository;
+		this.mapper = mapper;
 	}
 
 	@Override
