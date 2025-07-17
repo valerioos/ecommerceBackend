@@ -6,6 +6,8 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Set;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.maravilla.clientes.clients.PedidoCliente;
 import com.maravilla.commons.dto.ClientesRequest;
 import com.maravilla.commons.dto.ClientesResponse;
@@ -14,7 +16,6 @@ import com.maravilla.commons.exception.EntidadRelacionadaException;
 import com.maravilla.mappers.clienteMapper;
 import com.maravilla.repository.clienteRepository;
 
-import jakarta.transaction.Transactional;
 
 public class clienteServiceimpl implements clienteServicies{
 	
@@ -22,14 +23,13 @@ public class clienteServiceimpl implements clienteServicies{
 	private clienteMapper clienteMapper;
 	private PedidoCliente pedidoCliente;	
 	
-	public clienteServiceimpl(clienteRepository clienteRepository, clienteMapper clienteMapper,
-			pedidoCliente pedidoClient) {
-		super();
+
+	public clienteServiceimpl(com.maravilla.repository.clienteRepository clienteRepository,
+			com.maravilla.mappers.clienteMapper clienteMapper, PedidoCliente pedidoCliente) {
 		this.clienteRepository = clienteRepository;
 		this.clienteMapper = clienteMapper;
-		this.pedidoCliente = pedidoClient;
+		this.pedidoCliente = pedidoCliente;
 	}
-	
 
 	@Override
 	@Transactional(readOnly = true)
@@ -68,17 +68,20 @@ public class clienteServiceimpl implements clienteServicies{
 	}
 
 	@Override
+	@Transactional
 	public ClientesResponse eliminar(Long id) {
 		
-		Clientes clientes = clienteRepository.findById(id).orElseThrow(NoSuchElementException:: new);
-		boolean enUso=PedidoCliente.clienteIsPresent(id);
+		Clientes cliente = clienteRepository.findById(id).orElseThrow(NoSuchElementException:: new);
+		
+		boolean enUso = pedidoCliente.clienteIsPresent(id);
 		
 		if (enUso) {
-			throw new EntidadRelacionadaException("no se puede eliminar -cliente-, ya que esta asociado a un pedido");
-		}else {
+			throw new EntidadRelacionadaException("No se pudo eliminar el CLIENTE ya que está asociado a un PEDIDO");
+		} else {
 			clienteRepository.deleteById(id);
-			return clienteMapper.entityToResponse(clientes);
+			return clienteMapper.entityToResponse(cliente);
 		}
+		
 	}
 
 }

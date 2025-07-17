@@ -1,8 +1,5 @@
 package com.maravilla.controllers;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.maravilla.commons.controllers.CommonController;
@@ -17,9 +14,4 @@ public class clientesController extends CommonController<ClientesRequest, Client
 		 super (service);
 	 }
 	 
-	 @GetMapping("/id-clientes/{id}")
-	 public ResponseEntity<Boolean>clientesIsPresent(@PathVariable Long id){
-			boolean isPresent = service.existeTipo(id);
-			return ResponseEntity.ok(isPresent);
-}
 }
